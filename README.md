@@ -162,24 +162,7 @@ constraint.**
 
 ---
 
-## Bugs found and fixed
 
-**1. Data leakage in feature scaling.** The original pipeline fit `StandardScaler` on
-the entire dataset *before* splitting into train/test, which leaks test-set statistics
-into the "unseen" test data. Fixed by fitting the scaler on the training split only,
-then transforming the test split with those training-derived statistics.
-
-**2. A cuDF index-alignment bug.** This one took a bit of debugging. After splitting
-data with `train_test_split`, the resulting train/test DataFrames keep their original
-(shuffled) row indices — not a clean `0, 1, 2, ...` sequence. When I assigned a scaled
-column back using `cuML`'s `fit_transform()` output, which comes back with its own
-fresh index starting at 0, cuDF tried to align the two by index rather than by
-position — and where the indices didn't match, it silently filled in `NaN`. The same
-code works fine on CPU, because `sklearn`'s `fit_transform()` returns a plain NumPy
-array with no index at all, so pandas just assigns by position. Fixed by resetting the
-index on the split DataFrames before reassigning the scaled column.
-
----
 
 ## Repository structure
 
