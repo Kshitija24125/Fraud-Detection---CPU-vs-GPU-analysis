@@ -16,7 +16,7 @@ their own right.
 
 ## Why this project
 
-"Just use GPU, it's faster" is a common assumption, but it isn't always true — especially
+"Just use GPU, it's faster" is a common assumption, but it isn't always true , especially
 at small scale, where setup overhead can outweigh any computational savings. I wanted
 real numbers showing where that line actually falls, for more than one algorithm,
 rather than taking the claim on faith.
