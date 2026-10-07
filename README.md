@@ -194,11 +194,11 @@ constraint.**
 ## Limitations
 
 - The dataset's artificial class balance means these results reflect a best-case
-  scenario — real fraud data's extreme imbalance could change both model behavior and
+  scenario  real fraud data's extreme imbalance could change both model behavior and
   the CPU/GPU performance picture.
 - SVM wasn't benchmarked on CPU across all five sizes, for the reasons noted above.
 - GPU memory measurements reflect per-call deltas under RMM's pool allocator, which may
   understate each model's true peak memory footprint.
-- All GPU numbers come from a single hardware target (NVIDIA T4 via Google Colab) —
+- All GPU numbers come from a single hardware target (NVIDIA T4 via Google Colab) 
   absolute numbers would likely shift on different hardware, though the qualitative
   trends (crossover existing, RF scaling better than LR, cold start) would probably hold.
